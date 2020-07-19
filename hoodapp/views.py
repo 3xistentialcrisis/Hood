@@ -7,6 +7,10 @@ from .models import Neighbourhood
 
 # Create your views here.
 #Index Page
-
 def index(request):
     return render(request, 'index.html')
+
+#Profile
+@login_required(login_url='/accounts/login/')
+def profile(request, username):
+    return render(request, 'profile.html')
