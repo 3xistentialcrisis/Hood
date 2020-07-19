@@ -76,3 +76,8 @@ def login_request(request):
     else:
         form = AuthenticationForm()
     return render(request = request, template_name = "registration/login.html", context={"form":form})
+
+#User Logout
+def logout(request):
+    auth.logout(request)
+    return redirect('hoodapp:login')
