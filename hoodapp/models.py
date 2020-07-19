@@ -62,5 +62,24 @@ class Business(models.Model):
         businesses = cls.objects.filter(name__icontains=search_term)
         return businesses
     
+#Post 
+class Post(models.Model):
+    image=models.ImageField(upload_to='photos/',null=True,blank=True)
+    image_name=models.CharField(max_length=30)
+    message=models.TextField(max_length=100,null=True,blank=True)
+    estate=models.ForeignKey(Neighbourhood,on_delete=models.CASCADE,null=True,blank=True)
+    user_profile=models.ForeignKey(Profile)
+    user=models.ForeignKey(User)
+
+    def save_post(self):     
+        self.save()
+
+    def delete_post(self):     
+        self.delete()
+
+    @classmethod
+    def get_posts(cls):      
+        messages = cls.objects.all()
+        return messages
 
     

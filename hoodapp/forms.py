@@ -38,3 +38,9 @@ class BusinessForm(forms.ModelForm):
         model = Business
         fields = ['image','name', 'email']
         exclude= ['description','hood', 'user']
+
+#Post
+class PostMessageForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['message']

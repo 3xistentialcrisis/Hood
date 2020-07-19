@@ -5,12 +5,19 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from .forms import SignupForm, UpdateProfileForm, UpdateUserProfileForm,
-from .models import Neighbourhood, Profile, Business
+from .models import Neighbourhood, Profile, Business, Post
 
 # Create your views here.
 #Index Page
 def index(request):
     return render(request, 'index.html')
+
+#Homepage
+@login_required(login_url='/accounts/login/')
+def homepage(request):
+    current_user =request.user
+    return render(request, 'homepage.html', {'user':current_user})
+
 
 #User Signup
 def signup(request):
