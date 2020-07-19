@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^update_profile/(?P<username>\w+)', views.update_profile, name='update'),
     # url(r'^new/hood/$',views.create_neighbourhood, name='newHood'),
     url(r'signup/', views.signup, name='signup'),
+    url(r'login/$',views.login_request, name='login'),
 
 ]
 
