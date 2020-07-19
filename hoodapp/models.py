@@ -41,7 +41,7 @@ class Profile(models.Model):
 
 #Business
 class Business(models.Model):
-    image=models.ImageField(upload_to='business/' ,null=True,blank=True)
+    image=models.ImageField(upload_to='business/', default = '/media/default.png')
     description = models.TextField(default='Welcome')
     name=models.CharField(max_length=30,null=True)
     email=models.EmailField(max_length=70,blank=True)
@@ -56,6 +56,11 @@ class Business(models.Model):
     
     def delete_business(self):
         self.delete()
+    
+    @classmethod
+    def search_business(cls, search_term):
+        businesses = cls.objects.filter(name__icontains=search_term)
+        return businesses
     
 
     

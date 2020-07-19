@@ -10,10 +10,11 @@ urlpatterns = [
     url(r'^profile/(?P<username>\w+)', views.profile, name='profile'),
     url(r'^user_profile/(?P<username>\w+)', views.user_profile, name='userprofile'),
     url(r'^update_profile/(?P<username>\w+)', views.update_profile, name='update'),
-    # url(r'^new/hood/$',views.create_neighbourhood, name='newHood'),
     url(r'signup/', views.signup, name='signup'),
     url(r'login/$',views.login_request, name='login'),
     url(r'^logout/$', views.logout, name='logout'),
+    url(r'account/', include('django.contrib.auth.urls')),
+    url(r'search/', views.search_business, name='search'),
 
 ]
 

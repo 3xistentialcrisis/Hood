@@ -37,3 +37,4 @@ class BusinessForm(forms.ModelForm):
     class Meta:
         model = Business
         fields = ['image','name', 'email']
+        exclude= ['description','hood', 'user']
