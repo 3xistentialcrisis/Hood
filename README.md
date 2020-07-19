@@ -12,16 +12,16 @@ This a web application that allows the User to be in the loop about everything h
 ## Screenshots 
 ###### Home page
  
-<img src="https://raw.githubusercontent.com/3xistentialcrisis/Awards/master/static/images/.png" width="900px" height="440px">
+<img src="https://raw.githubusercontent.com/3xistentialcrisis/Hood/master/static/images/.png" width="900px" height="440px">
  
 ###### Sign Up
- <img src="https://raw.githubusercontent.com/3xistentialcrisis/Awards/master/static/images/.png" width="900px" height="440px">
+ <img src="https://raw.githubusercontent.com/3xistentialcrisis/Hood/master/static/images/.png" width="900px" height="440px">
 
 ###### Login
- <img src="https://raw.githubusercontent.com/3xistentialcrisis/Awards/master/static/images/.png" width="900px" height="440px">
+ <img src="https://raw.githubusercontent.com/3xistentialcrisis/Hood/master/static/images/.png" width="900px" height="440px">
 
 ###### Login
- <img src="https://raw.githubusercontent.com/3xistentialcrisis/Awards/master/static/images/.png" width="900px" height="440px">
+ <img src="https://raw.githubusercontent.com/3xistentialcrisis/Hood/master/static/images/.png" width="900px" height="440px">
 
 ## User Story  
 This app enables user to:
@@ -44,7 +44,7 @@ To get the project .......
 ```
 ##### Navigate into the folder and install requirements  
  ```bash 
-cd Awards pip install -r requirements.txt 
+cd Hood pip install -r requirements.txt 
 ```
 ##### Install and activate Virtual  
  ```bash 
@@ -61,7 +61,7 @@ source virtual/bin/activate
  ##### Setup Database  
   SetUp your database User,Password, Host then make migrations 
  ```bash 
-python manage.py makemigrations awards
+python manage.py makemigrations hood
  ``` 
  Now Migrate  
  ```bash 
