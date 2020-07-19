@@ -1,8 +1,22 @@
 from django import forms
-from .models import Neighbourhood
+from django.contrib.auth.models import User
+from .models import Neighbourhood, Profile
 
-
-class NeighborhoodForm(forms.ModelForm):
+#Neighbo
+class NeighbourhoodForm(forms.ModelForm):
     class Meta:
         model = Neighbourhood
-        fields = fields = ['neighborhood_name','location', 'population']
+        fields = fields = ['neighbourhood_name','location', 'population']
+
+class UpdateProfileForm(forms.ModelForm):
+    email = forms.EmailField(max_length=254)
+
+    class Meta:
+        model = User
+        fields = ('username', 'email')
+        
+class UpdateUserProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['name', 'location', 'profile_picture', 'email']
+        exclude=['user'] 
