@@ -10,7 +10,7 @@ class Neighbourhood(models.Model):
     population=models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return self.Neighborhood
+        return self.neighborhood
 
     def create_neighbourhood(self):
         self.save()
@@ -38,4 +38,24 @@ class Profile(models.Model):
     @receiver(post_save, sender=User)
     def save_userprofile(sender, instance, **kwargs):
         instance.profile.save()
+
+#Business
+class Business(models.Model):
+    image=models.ImageField(upload_to='business/' ,null=True,blank=True)
+    description = models.TextField(default='Welcome')
+    name=models.CharField(max_length=30,null=True)
+    email=models.EmailField(max_length=70,blank=True)
+    hood=models.ForeignKey(Neighbourhood,on_delete=models.CASCADE,null=True,blank=True)
+    user=models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
+    
+    def __str__(self):
+        return self.name
+    
+    def save_business(self):
+        self.save()
+    
+    def delete_business(self):
+        self.delete()
+    
+
     

@@ -5,47 +5,12 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from .forms import SignupForm, UpdateProfileForm, UpdateUserProfileForm,
-from .models import Neighbourhood, Profile
+from .models import Neighbourhood, Profile, Business
 
 # Create your views here.
 #Index Page
 def index(request):
     return render(request, 'index.html')
-
-#Profile
-@login_required(login_url='/accounts/login/')
-def profile(request, username):
-    return render(request, 'profile.html')
-
-#User Profile
-def user_profile(request, username):
-    user_prof = get_object_or_404(User, username=username)
-    if request.user == user_prof:
-        return redirect('profile', username=request.user.username)
-    params = {
-        'user_prof': user_prof,
-    }
-    return render(request, 'userprofile.html', params)
-
-#Update User Profile
-@login_required(login_url='/accounts/login/')
-def update_profile(request, username):
-    user = User.objects.get(username=username)
-    if request.method == 'POST':
-        user_form = UpdateProfileForm(request.POST, instance=request.user)
-        prof_form = UpdateUserProfileForm(request.POST, request.FILES, instance=request.user.profile)
-        if user_form.is_valid() and prof_form.is_valid():
-            user_form.save()
-            prof_form.save()
-            return redirect('hoodapp:profile', user.username)
-    else:
-        user_form = UpdateProfileForm(instance=request.user)
-        prof_form = UpdateUserProfileForm(instance=request.user.profile)
-    params = {
-        'user_form': user_form,
-        'prof_form': prof_form
-    }
-    return render(request, 'update.html', params)
 
 #User Signup
 def signup(request):
@@ -81,3 +46,38 @@ def login_request(request):
 def logout(request):
     auth.logout(request)
     return redirect('hoodapp:login')
+
+#Profile
+@login_required(login_url='/accounts/login/')
+def profile(request, username):
+    return render(request, 'profile.html')
+
+#User Profile
+def user_profile(request, username):
+    user_prof = get_object_or_404(User, username=username)
+    if request.user == user_prof:
+        return redirect('profile', username=request.user.username)
+    params = {
+        'user_prof': user_prof,
+    }
+    return render(request, 'userprofile.html', params)
+
+#Update User Profile
+@login_required(login_url='/accounts/login/')
+def update_profile(request, username):
+    user = User.objects.get(username=username)
+    if request.method == 'POST':
+        user_form = UpdateProfileForm(request.POST, instance=request.user)
+        prof_form = UpdateUserProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        if user_form.is_valid() and prof_form.is_valid():
+            user_form.save()
+            prof_form.save()
+            return redirect('hoodapp:profile', user.username)
+    else:
+        user_form = UpdateProfileForm(instance=request.user)
+        prof_form = UpdateUserProfileForm(instance=request.user.profile)
+    params = {
+        'user_form': user_form,
+        'prof_form': prof_form
+    }
+    return render(request, 'update.html', params)
