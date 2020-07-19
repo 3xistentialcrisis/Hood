@@ -17,10 +17,10 @@ def profile(request, username):
 
 #User Profile
 def user_profile(request, username):
-    userprofile = get_object_or_404(User, username=username)
-    if request.user == userprofile:
+    user_prof = get_object_or_404(User, username=username)
+    if request.user == user_prof:
         return redirect('profile', username=request.user.username)
     params = {
-        'userprofile': userprofile,
+        'user_prof': user_prof,
     }
     return render(request, 'userprofile.html', params)
