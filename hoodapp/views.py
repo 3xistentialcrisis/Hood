@@ -14,3 +14,13 @@ def index(request):
 @login_required(login_url='/accounts/login/')
 def profile(request, username):
     return render(request, 'profile.html')
+
+#User Profile
+def user_profile(request, username):
+    userprofile = get_object_or_404(User, username=username)
+    if request.user == userprofile:
+        return redirect('profile', username=request.user.username)
+    params = {
+        'userprofile': userprofile,
+    }
+    return render(request, 'userprofile.html', params)
