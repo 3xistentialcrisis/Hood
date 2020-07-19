@@ -7,7 +7,7 @@ app_name = 'hoodapp'
 
 urlpatterns = [
     url('^$', views.index, name='index'),
-    
+    url(r'^profile/(?P<username>\w+)', views.profile, name='profile'),
 ]
 
 
