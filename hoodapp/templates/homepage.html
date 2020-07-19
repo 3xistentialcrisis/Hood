@@ -1,1 +1,37 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+
+{% block content %}
+
+<div class="container-fluid" style="margin-top:5%;">
+        <div class="container-fluid">
+            <!DOCTYPE html>
+            <html lang="en">
+            <body>
+                <div class="col-md-4">
+                        <a href="{% url 'hoodapp:businesses'%}">
+                            <div class="panel panel-default">
+                                <div class="panel heading" style="height:50px;">
+                                    <p>Businesses</p>
+                                </div>
+                                <div class="panel-body" style="height:300px;">
+                                    
+                                        <img class="card-img-top dark"
+                                            src=""
+                                            style="width:330px;height:250px;">
+                                            <div class="text-center">
+                                                    <a href="{% url 'new_business' %}">
+                                                      <button class="btn btn-primary" style="height:50px;  margin-top: -6px;">Register New Business</button>
+                                                    </a>
+                                            </div>
+                                    </div>
+                                
+                        </a>
+                
+                    </div>

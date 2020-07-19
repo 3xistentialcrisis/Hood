@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+    </div>
+
+    <div class="row">
+        {% for business in businesses %}
+        <div class="col-md-6">
+                <div class="card" style="width: 20rem;margin-top:10px;">
+                  <div class="card-body">
+                    <h3 class="card-title" data-toggle="modal" data-target="#{{business.id}}">{{business.name}}
+                    </h3>
+                  </div>
+                </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+                <div class="card" style="width: 20rem;margin-top:10px;">
+                    <div class="card-body">
+                    <h3 class="card-title" data-toggle="modal">{{business.name}}</h3>
+                    <p><span style="font-weight:bold;">Description</span> {{business.description}}</p>
+                    <p>Location</span> {{business.hood}}</p>
+                    <p>Email</span> {{business.email}}</p>
+                    </div>
+                </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

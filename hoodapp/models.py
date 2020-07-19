@@ -29,6 +29,7 @@ class Profile(models.Model):
     # user= models.ForeignKey(User, on_delete=models.CASCADE)
     profile_picture = models.ImageField(upload_to='images/', default='default.png')
     name = models.CharField(blank=True, max_length=120)
+    neighbourhood = models.ForeignKey(neighbourhood,on_delete=models.CASCADE)
     location = models.CharField(max_length=60, blank=True)
     email = models.EmailField(max_length=100, blank=True)
     

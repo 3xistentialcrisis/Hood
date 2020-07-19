@@ -93,6 +93,36 @@ def update_profile(request, username):
     }
     return render(request, 'update.html', params)
 
+#Display All Businesses
+@login_required(login_url='/accounts/login/')
+def businesses(request):
+    current_user=request.user
+    profile=Profile.objects.get(username=current_user)
+    businesses = Business.objects.filter(neighbourhood=profile.neighbourhood)
+
+    return render(request,'all_businesses.html',{"businesses":businesses})
+
+#Create New Business
+@login_required(login_url='/accounts/login/')
+def new_business(request):
+    current_user=request.user
+    profile =Profile.objects.get(username=current_user)
+
+    if request.method=="POST":
+        form =BusinessForm(request.POST,request.FILES)
+        if form.is_valid():
+            business = form.save(commit = False)
+            business.user = current_user
+            business.hood = profile.neighbourhood
+            business.save()
+
+        return HttpResponseRedirect('/all_businesses')
+
+    else:
+        form = BusinessForm()
+
+    return render(request,'new_business.html',{"form":form})
+
 #Search Businesses
 def search_business(request):
     if 'business' in request.GET and request.GET["business"]:
