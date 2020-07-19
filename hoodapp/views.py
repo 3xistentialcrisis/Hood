@@ -81,3 +81,16 @@ def update_profile(request, username):
         'prof_form': prof_form
     }
     return render(request, 'update.html', params)
+
+#Search Businesses
+def search_business(request):
+    if 'business' in request.GET and request.GET["business"]:
+        search_term = request.GET.get("business")
+        searched_businesses = Business.search_business(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html', {"message": message, "businesses": searched_business})
+
+    else:
+        message = "You haven't searched for any business"
+        return render(request, 'search.html', {"message": message})
