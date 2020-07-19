@@ -17,6 +17,11 @@ class Neighbourhood(models.Model):
 
     def delete_neighbourhood(self):
         self.delete()
+    
+    @classmethod
+    def get_neighbourhoods(cls):
+        estates = Neighbourhood.objects.all()
+        return estates
 
 #User Profile
 class Profile(models.Model):
@@ -62,14 +67,23 @@ class Business(models.Model):
         businesses = cls.objects.filter(name__icontains=search_term)
         return businesses
     
+    @classmethod
+    def find_business(cls,neighbourhood_id):
+        messages = cls.objects.all().filter(hood=neighbourhood_id)
+        return messages
+    
 #Post 
 class Post(models.Model):
+    title = models.CharField(max_length=155)
     image=models.ImageField(upload_to='photos/',null=True,blank=True)
     image_name=models.CharField(max_length=30)
     message=models.TextField(max_length=100,null=True,blank=True)
     estate=models.ForeignKey(Neighbourhood,on_delete=models.CASCADE,null=True,blank=True)
     user_profile=models.ForeignKey(Profile)
     user=models.ForeignKey(User)
+
+    def __str__(self):
+        return f'{self.title}'
 
     def save_post(self):     
         self.save()

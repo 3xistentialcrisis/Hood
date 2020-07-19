@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
-from .forms import SignupForm, UpdateProfileForm, UpdateUserProfileForm,
+from .forms import SignupForm, UpdateProfileForm, UpdateUserProfileForm, PostMessageForm
 from .models import Neighbourhood, Profile, Business, Post
 
 # Create your views here.
@@ -16,7 +16,11 @@ def index(request):
 @login_required(login_url='/accounts/login/')
 def homepage(request):
     current_user =request.user
-    return render(request, 'homepage.html', {'user':current_user})
+    hoods=Neighbourhood.get_neighbourhoods
+    post=Post.objects.all()
+    home=Follow.objects.get(user = request.user)
+    business=Business.find_business(home.estates)
+    return render(request, 'homepage.html', {'user':current_user, "posts":post, "estates":home,"hoods":hoods, "business":business})
 
 
 #User Signup
@@ -101,3 +105,22 @@ def search_business(request):
     else:
         message = "You have not searched for any business"
         return render(request, 'search_results.html', {"message": message})
+
+#New Post
+@login_required(login_url='/accounts/login/')
+def new_post(request):
+    current_user = request.user
+    posts =Profile.objects.get(user = request.user.id)
+    if request.method =='POST':
+        form = PostMessageForm(request.POST,request.FILES)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.user = current_user
+            project.user_profile = posts
+            project.save()
+        return redirect('welcome')
+
+    else:
+        form = PostMessageForm()
+
+    return render(request,'new_post.html',{"form":form})
