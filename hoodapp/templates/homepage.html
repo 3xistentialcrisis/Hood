@@ -9,29 +9,56 @@
 
 {% block content %}
 
-<div class="container-fluid" style="margin-top:5%;">
-        <div class="container-fluid">
-            <!DOCTYPE html>
-            <html lang="en">
-            <body>
-                <div class="col-md-4">
-                        <a href="{% url 'hoodapp:businesses'%}">
-                            <div class="panel panel-default">
-                                <div class="panel heading" style="height:50px;">
-                                    <p>Businesses</p>
-                                </div>
-                                <div class="panel-body" style="height:300px;">
-                                    
-                                        <img class="card-img-top dark"
-                                            src=""
-                                            style="width:330px;height:250px;">
-                                            <div class="text-center">
-                                                    <a href="{% url 'new_business' %}">
-                                                      <button class="btn btn-primary" style="height:50px;  margin-top: -6px;">Register New Business</button>
-                                                    </a>
-                                            </div>
+<body>
+    <div class="container-fluid" style="margin-top:5%;">
+            <div class="container-fluid">
+                    <div class="col-md-4">
+                            <a href="{% url 'hoodapp:businesses'%}">
+                                <div class="panel panel-default">
+                                    <div class="panel heading" style="height:50px;">
+                                        <p>Businesses</p>
                                     </div>
-                                
-                        </a>
-                
+                                    <div class="panel-body" style="height:300px;">
+                                        
+                                            <img class="card-img-top dark"
+                                                src=""
+                                                style="width:330px;height:250px;">
+                                                <div class="text-center">
+                                                        <a href="{% url 'hoodapp:new_business' %}">
+                                                        <button class="btn btn-primary" style="height:50px;  margin-top: -6px;">Register New Business</button>
+                                                        </a>
+                                                </div>
+                                        </div>
+                                    
+                            </a>
+                    
                     </div>
+
+                    <!-- Display Posts -->
+                    <div class="container"> 
+                        <section class="col-md-8 col-sm-12">
+                            <h3 style="text-align:center;font-size: 28px">Posts</h3>
+                            <hr>
+                            {%if posts %} 
+                            {% for post in posts %}
+                            <p>
+                                <span style="color:rgb(5, 5, 54)"> {{post.user}}</span> {{post.title}}
+                                    
+                            </p>
+                            <p>
+                                <span style="color:rgb(5, 5, 54)"> {{post.user}}</span> {{post.message}}
+                                
+                            </p>
+
+                            {% endfor %}
+                                {% else %}
+                            <p style="text-align:center">No Posts Available</p>
+                            {% endif %}
+                        </section>
+                    </div>
+            </div>
+    </div>
+{% endblock %}
+</body>
+
+                
