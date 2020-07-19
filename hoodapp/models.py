@@ -4,6 +4,6 @@ from django.contrib.auth.models import User
 # Create your models here.
 #Neighbourhood 
 class Neighbourhood(models.Model):
-    neighbourhood= models.CharField(max_length=100)
+    neighbourhood_name= models.CharField(max_length=100)
     location=models.CharField(max_length=30)
     
