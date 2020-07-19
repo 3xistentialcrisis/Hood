@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
+from .forms import SignupForm, UpdateProfileForm, UpdateUserProfileForm,
 from .models import Neighbourhood, Profile
 
 # Create your views here.
