@@ -43,4 +43,4 @@ class BusinessForm(forms.ModelForm):
 class PostMessageForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['message']
+        fields = ['title','message']
