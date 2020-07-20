@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
-from .forms import SignupForm, UpdateProfileForm, UpdateUserProfileForm, PostMessageForm, BusinessForm
+from .forms import SignupForm, UpdateProfileForm, UpdateUserProfileForm, PostMessageForm, BusinessForm, NeighbourhoodForm
 from .models import Neighbourhood, Profile, Business, Post
 
 # Create your views here.
