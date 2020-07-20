@@ -163,8 +163,8 @@ def create_neighbourhood(request):
         form=NeighbourhoodForm(request.POST,request.files)
         if form.is_valid:
             NeighbourhoodForm=form.save(commit=False)
-            Neighbourhood.user=current_user
-            Neighbourhood.save()
+            NeighbourhoodForm.user=current_user
+            NeighbourhoodForm.save()
             return redirect('hoodapp:homepage')
 
         else:
