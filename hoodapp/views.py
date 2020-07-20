@@ -47,7 +47,7 @@ def login_request(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('/')
+                return redirect('hoodapp:homepage')
     else:
         form = AuthenticationForm()
     return render(request = request, template_name = "registration/login.html", context={"form":form})
