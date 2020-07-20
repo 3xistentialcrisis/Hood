@@ -114,4 +114,14 @@ class Security(models.Model):
 
     def __str__(self):
         return self.company
-    
+
+#Health
+class Health(models.Model):
+    neighbourhood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
+    name =models.CharField(max_length=100)
+    email = models.EmailField()
+    contact = models.IntegerField()
+    address =models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name

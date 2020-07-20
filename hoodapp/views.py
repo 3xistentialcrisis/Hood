@@ -5,7 +5,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from .forms import SignupForm, UpdateProfileForm, UpdateUserProfileForm, PostMessageForm, BusinessForm, NeighbourhoodForm
-from .models import Neighbourhood, Profile, Business, Post, Security
+from .models import Neighbourhood, Profile, Business, Post, Security, Health
 
 # Create your views here.
 #Index Page
@@ -196,3 +196,13 @@ def security(request):
     security = Security.objects.filter(neighbourhood=profile.location)
 
     return render(request,'security.html',{"security":security})
+
+#Health 
+@login_required(login_url='/accounts/login/')
+def health(request):
+    current_user=request.user
+    profile=Profile.objects.get(name=current_user)
+    healthservices = Health.objects.filter(neighbourhood=profile.location)
+
+    return render(request,'health.html',{"healthservices":healthservices})
+
