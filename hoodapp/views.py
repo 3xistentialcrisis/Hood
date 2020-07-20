@@ -5,7 +5,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from .forms import SignupForm, UpdateProfileForm, UpdateUserProfileForm, PostMessageForm, BusinessForm, NeighbourhoodForm
-from .models import Neighbourhood, Profile, Business, Post
+from .models import Neighbourhood, Profile, Business, Post, Security
 
 # Create your views here.
 #Index Page
@@ -187,3 +187,12 @@ def hood_details(request,neighbourhood_name):
         details=Neighbourhood.get_one_hood(neighbourhood_name)
         exists=0
     return render(request,'one_hood.html',{"exists":exists,"details":details})
+
+#Security
+@login_required(login_url='/accounts/login/')
+def security(request):
+    current_user=request.user
+    profile=Profile.objects.get(name=current_user)
+    security = Security.objects.filter(neighbourhood=profile.location)
+
+    return render(request,'security.html',{"security":security})

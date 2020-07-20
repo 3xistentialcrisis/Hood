@@ -104,4 +104,14 @@ class Post(models.Model):
         messages = cls.objects.all()
         return messages
 
+#Security
+class Security(models.Model):
+    neighbourhood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
+    company = models.CharField(max_length=200)
+    email = models.EmailField()
+    contact = models.IntegerField()
+    address =models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.company
     

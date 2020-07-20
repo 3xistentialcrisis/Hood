@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^new_hood/$',views.create_neighbourhood, name='new_hood'),
     url(r'^all_hoods/',views.neighbourhoods, name='all_hoods'),
     url(r'^neighborhood/(\d+)',views.hood_details, name='onehood'),
+    url(r'^security',views.security, name='security'),
 ]
 
 
