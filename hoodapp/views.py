@@ -162,7 +162,7 @@ def create_neighbourhood(request):
     if request.method=='post':
         form=NeighbourhoodForm(request.POST,request.files)
         if form.is_valid:
-            neighbourhood=form.save(commit=False)
+            NeighbourhoodForm=form.save(commit=False)
             Neighbourhood.user=current_user
             Neighbourhood.save()
             return redirect('hoodapp:homepage')
