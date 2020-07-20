@@ -154,3 +154,36 @@ def new_post(request):
         form = PostMessageForm()
 
     return render(request,'new_post.html',{"form":form})
+
+
+#Create Neighbourhood
+@login_required(login_url='/accounts/login')
+def create_neighbourhood(request):
+    if request.method=='post':
+        form=NeighbourhoodForm(request.POST,request.files)
+        if form.is_valid:
+            neighbour=form.save(commit=False)
+            neighbour.user=current_user
+            neigghbour.save()
+            return redirect('hoodapp:homepage')
+
+        else:
+            form=NeighbourhoodForm()
+        return render(request,'neighbourhood.html',{"form":form})
+
+#All Neighbourhoods
+def neighbourhoods(request):
+    current_user=request.user
+    hoods=Neighbourhood.get_neighbourhoods
+    return render (request,'allneighbourhoods.html',{"user":current_user,"hoods":hoods})
+
+#One Neighbourhood
+@login_required(login_url='/accounts/login')
+def hood_details(request,neighbourhood_name):
+    if len(Follow.objects.all().filter(user=request.user))>0:
+        details=Neighbourhood.get_one_hood(neighbourhood_name)
+        exists=Follow.objects.all().get(user=request.user)
+    else:
+        details=Neighbourhood.get_one_hood(neighbourhood_name)
+        exists=0
+    return render(request,'one_hood.html',{"exists":exists,"details":details})

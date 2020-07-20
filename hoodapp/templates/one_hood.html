@@ -1,0 +1,21 @@
+{% extends 'base.html' %} 
+{% load static%}
+
+{% block content %}
+
+<div class="container">
+        <section class="col-md-5 col-sm-12">
+            <div>
+                <p>Name : {{Neighbourhood.neighbourhood_name}}</p>
+                <p>Location : {{Neighbourhood.location}}</p>
+                <p>Population : {{Neighbourhood.population}}</p>
+                
+                <a href=" {% url 'hoodapp:all_hoods' %}">
+                    <button type="button" name="button" class="btn btn-danger btn-md  pull-right  ">All Neighbourhoods </button>
+                </a>
+            </div>
+        </section>
+    </div>
+</div>  
+
+{% endblock %}

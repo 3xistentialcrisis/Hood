@@ -24,6 +24,11 @@ class Neighbourhood(models.Model):
     def get_neighbourhoods(cls):
         estates = Neighbourhood.objects.all()
         return estates
+    
+    @classmethod
+    def get_one_hood(cls,id):
+        chosen_hood = cls.objects.get(id=id)
+        return chosen_hood
 
 #User Profile
 class Profile(models.Model):

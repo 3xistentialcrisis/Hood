@@ -19,7 +19,9 @@ urlpatterns = [
     url(r'^post/', views.new_post, name='new_post'),
     url(r'^businesses/',views.businesses, name='businesses'),
     url(r'^new_business/$',views.new_business, name='new_business'),
-
+    url(r'^new_hood/$',views.create_neighbourhood, name='new_hood'),
+    url(r'^all_hoods/',views.neighbourhoods, name='all_hoods'),
+    url(r'^neighborhood/(\d+)',views.hood_details, name='onehood'),
 ]
 
 
