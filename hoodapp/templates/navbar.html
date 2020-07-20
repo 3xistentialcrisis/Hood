@@ -25,12 +25,10 @@
         <ul class="navbar-nav navbar-right">
                 {% if user.is_authenticated%}
                 <li class="nav-item dropdown">
-                    <!-- <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                        aria-haspopup="true"
-                       aria-expanded="false">{{ user.username }} <img class="rounded-circle nav-img"
-                                                                            src="{{ user.profile.profile_picture.url }}"
-                                                                            alt="">
-                    </a> -->
+                       aria-expanded="false">{{ user.username }}>
+                    </a>
                     <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item text-center" href="{% url 'hoodapp:profile' user.username %}">Profile</a>
                         <a class="dropdown-item text-center" href="{% url 'hoodapp:update' user.username  %}"> Update Profile</a>
