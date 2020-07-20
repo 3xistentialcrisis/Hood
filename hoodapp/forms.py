@@ -36,8 +36,8 @@ class SignupForm(UserCreationForm):
 class BusinessForm(forms.ModelForm):
     class Meta:
         model = Business
-        fields = ['image','name', 'email']
-        exclude= ['description','hood', 'user']
+        fields = ['image','name', 'email', 'description']
+        exclude= ['hood', 'user']
 
 #Post
 class PostMessageForm(forms.ModelForm):

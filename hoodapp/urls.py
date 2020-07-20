@@ -7,7 +7,7 @@ app_name = 'hoodapp'
 
 urlpatterns = [
     url('^$', views.index, name='index'),
-    url(r'^homepage/',views.homepage, name='homepage'),
+    url(r'^homepage/$',views.homepage, name='homepage'),
     url(r'^profile/(?P<username>\w+)', views.profile, name='profile'),
     url(r'^user_profile/(?P<username>\w+)', views.user_profile, name='userprofile'),
     url(r'^update_profile/(?P<username>\w+)', views.update_profile, name='update'),
@@ -17,7 +17,7 @@ urlpatterns = [
     url(r'account/', include('django.contrib.auth.urls')),
     url(r'search/', views.search_business, name='search'),
     url(r'^post/', views.new_post, name='post'),
-    url(r'^businesses/',views.businesses, name='businesses'),
+    url(r'^all_businesses/',views.businesses, name='businesses'),
     url(r'^new/business/$',views.new_business, name='new_business'),
 
 ]

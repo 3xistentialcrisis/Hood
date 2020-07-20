@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
-from .forms import SignupForm, UpdateProfileForm, UpdateUserProfileForm, PostMessageForm
+from .forms import SignupForm, UpdateProfileForm, UpdateUserProfileForm, PostMessageForm, BusinessForm
 from .models import Neighbourhood, Profile, Business, Post
 
 # Create your views here.
@@ -18,9 +18,8 @@ def homepage(request):
     current_user =request.user
     hoods=Neighbourhood.get_neighbourhoods
     post=Post.objects.all()
-    home=Follow.objects.get(user = request.user)
-    business=Business.find_business(home.estates)
-    return render(request, 'homepage.html', {'user':current_user, "posts":post, "estates":home,"hoods":hoods, "business":business})
+    business=Business.find_business
+    return render(request, 'homepage.html', {'user':current_user, "posts":post, "hoods":hoods, "business":business})
 
 
 #User Signup
@@ -33,7 +32,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('homepage')
+            return redirect('hoodapp:homepage')
     else:
         form = SignupForm()
     return render(request, 'registration/signup.html', {'form': form })
@@ -97,8 +96,9 @@ def update_profile(request, username):
 @login_required(login_url='/accounts/login/')
 def businesses(request):
     current_user=request.user
-    profile=Profile.objects.get(username=current_user)
-    businesses = Business.objects.filter(neighbourhood=profile.neighbourhood)
+    profile=Profile.objects.get(user=current_user)
+    business_hood = profile.location
+    businesses = Business.objects.filter(name=business_hood)
 
     return render(request,'all_businesses.html',{"businesses":businesses})
 
@@ -106,14 +106,14 @@ def businesses(request):
 @login_required(login_url='/accounts/login/')
 def new_business(request):
     current_user=request.user
-    profile =Profile.objects.get(username=current_user)
+    profile =Profile.objects.get(user=current_user)
 
     if request.method=="POST":
         form =BusinessForm(request.POST,request.FILES)
         if form.is_valid():
             business = form.save(commit = False)
             business.user = current_user
-            business.hood = profile.neighbourhood
+            Neighbourhood.hood = profile.location
             business.save()
 
         return HttpResponseRedirect('/all_businesses')

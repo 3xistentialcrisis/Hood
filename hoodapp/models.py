@@ -50,7 +50,7 @@ class Profile(models.Model):
 #Business
 class Business(models.Model):
     image=models.ImageField(upload_to='business/', default = '/media/default.png')
-    description = models.TextField(default='Welcome')
+    description = models.TextField(default='Tell Us More About Your Business')
     name=models.CharField(max_length=30,null=True)
     email=models.EmailField(max_length=70,blank=True)
     hood=models.ForeignKey(Neighbourhood,on_delete=models.CASCADE,null=True,blank=True)
