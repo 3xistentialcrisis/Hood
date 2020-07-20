@@ -14,18 +14,20 @@
             <div class="container-fluid">
                     <div class="col-md-4">
                             <a href="{% url 'hoodapp:businesses'%}">
-                                <div class="panel panel-default">
-                                    <div class="panel heading" style="height:50px;">
+                                <div class="panel panel-default" >
+                                    <div class="panel heading;" style="height:50px;">
                                         <p>Businesses</p>
                                     </div>
                                     <div class="panel-body" style="height:300px;">
                                         
                                             <img class="card-img-top dark"
-                                                src=""
+                                                src="/static/images/business.png"
                                                 style="width:330px;height:250px;">
+                                                <br>
+                                                <br>
                                                 <div class="text-center">
                                                         <a href="{% url 'hoodapp:new_business' %}">
-                                                        <button class="btn btn-primary" style="height:50px;  margin-top: -6px;">Register New Business</button>
+                                                        <button class="btn btn-primary" style="height:50px;  margin-top: -6px;margin-left: -90px;">Register New Business</button>
                                                         </a>
                                                 </div>
                                         </div>
@@ -35,6 +37,8 @@
                     </div>
 
                     <!-- Display Posts -->
+                    <br>
+                    <br>
                     <div class="container"> 
                         <section class="col-md-8 col-sm-12">
                             <h3 style="text-align:center;font-size: 28px">Posts</h3>
