@@ -148,7 +148,7 @@ def new_post(request):
             project.user = current_user
             project.user_profile = posts
             project.save()
-        return redirect('homepage')
+        return redirect('hoodapp:homepage')
 
     else:
         form = PostMessageForm()
