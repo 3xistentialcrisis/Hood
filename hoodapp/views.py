@@ -144,10 +144,10 @@ def new_post(request):
     if request.method =='POST':
         form = PostMessageForm(request.POST,request.FILES)
         if form.is_valid():
-            project = form.save(commit=False)
-            project.user = current_user
-            project.user_profile = posts
-            project.save()
+            Post = form.save(commit=False)
+            Post.user = current_user
+            Post.user_profile = posts
+            Post.save()
         return redirect('hoodapp:homepage')
 
     else:
@@ -162,9 +162,9 @@ def create_neighbourhood(request):
     if request.method=='post':
         form=NeighbourhoodForm(request.POST,request.files)
         if form.is_valid:
-            neighbour=form.save(commit=False)
-            neighbour.user=current_user
-            neigghbour.save()
+            neighbourhood=form.save(commit=False)
+            Neighbourhood.user=current_user
+            Neighbourhood.save()
             return redirect('hoodapp:homepage')
 
         else:
