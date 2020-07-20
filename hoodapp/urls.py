@@ -16,7 +16,7 @@ urlpatterns = [
     url(r'^logout/$', views.logout, name='logout'),
     url(r'account/', include('django.contrib.auth.urls')),
     url(r'search/', views.search_business, name='search'),
-    url(r'^post/', views.new_post, name='post'),
+    url(r'^post/', views.new_post, name='new_post'),
     url(r'^all_businesses/',views.businesses, name='businesses'),
     url(r'^new/business/$',views.new_business, name='new_business'),
 
