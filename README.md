@@ -10,18 +10,20 @@ This a web application that allows the User to be in the loop about everything h
  Click [View Site](https://hoodeye.herokuapp.com/)  to visit the site
   
 ## Screenshots 
-###### Home page
+###### Landing Page
  
-<img src="https://raw.githubusercontent.com/3xistentialcrisis/Hood/master/static/images/.png" width="900px" height="440px">
+<img src="https://raw.githubusercontent.com/3xistentialcrisis/Hood/master/static/images/landing.png" width="900px" height="440px">
+
+###### Home Page
+ <img src="https://raw.githubusercontent.com/3xistentialcrisis/Hood/master/static/images/homepage.png" width="900px" height="440px">
  
 ###### Sign Up
- <img src="https://raw.githubusercontent.com/3xistentialcrisis/Hood/master/static/images/.png" width="900px" height="440px">
+ <img src="https://raw.githubusercontent.com/3xistentialcrisis/Hood/master/static/images/signup.png" width="900px" height="440px">
 
 ###### Login
- <img src="https://raw.githubusercontent.com/3xistentialcrisis/Hood/master/static/images/.png" width="900px" height="440px">
+ <img src="https://raw.githubusercontent.com/3xistentialcrisis/Hood/master/static/images/login.png" width="900px" height="440px">
 
-###### Login
- <img src="https://raw.githubusercontent.com/3xistentialcrisis/Hood/master/static/images/.png" width="900px" height="440px">
+
 
 ## User Story  
 This app enables user to:
