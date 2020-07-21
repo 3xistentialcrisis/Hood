@@ -159,17 +159,24 @@ def new_post(request):
 #Create Neighbourhood
 @login_required(login_url='/accounts/login')
 def create_neighbourhood(request):
-    if request.method=='post':
-        form=NeighbourhoodForm(request.POST,request.files)
-        if form.is_valid():
-            neighbourhood=form.save(commit=False)
-            neighbourhood.user=current_user
-            neighbourhood.save()
-            return redirect('hoodapp:homepage')
+    # current_user = request.user
+    # neighbourhood = Neighbourhood.objects.get(user = request.user.id)
 
-        else:
-            form=NeighbourhoodForm()
-        return render(request,'neighbourhood.html',{"form":form})
+    # if request.method=='post':
+    #     form=NeighbourhoodForm(request.POST,request.files)
+    #     if form.is_valid():
+    #         neighbourhood=form.save(commit=False)
+    #         neighbourhood.user=current_user
+    #         neighbourhood.save()
+    #         return redirect('homepage')
+
+    #     else:
+    #         form=NeighbourhoodForm()
+    #     return render(request, 'neighbourhood.html',{"form":form})
+
+    current_user = request.user   
+    create_hood = Neighbourhood.create_neighbourhood
+    return render(request, 'neighbourhood.html', {"user":current_user,"create_hood":create_hood})
 
 #All Neighbourhoods
 def neighbourhoods(request):
