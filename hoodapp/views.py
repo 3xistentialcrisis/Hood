@@ -192,9 +192,9 @@ def hood_details(request,neighbourhood_name):
 @login_required(login_url='/accounts/login/')
 def security(request):
     current_user=request.user
-    profile=Profile.objects.get(name=current_user)
+    profile=Profile.objects.get(user=current_user)
     security_details = profile.location
-    security = Security.objects.filter(neighbourhood=security_details)
+    security = Security.objects.filter(company=security_details)
 
     return render(request,'security.html',{"security":security})
 
@@ -202,17 +202,8 @@ def security(request):
 @login_required(login_url='/accounts/login/')
 def health(request):
     current_user=request.user
-    profile=Profile.objects.get(name=current_user)
+    profile=Profile.objects.get(user=current_user)
     health_services = profile.location
-    healthy = Health.objects.filter(neighbourhood=health_services)
+    healthy = Health.objects.filter(name=health_services)
     return render(request,'health.html',{"healthy":healthy})
 
-
-# @login_required(login_url='/accounts/login/')
-# def businesses(request):
-#     current_user=request.user
-#     profile=Profile.objects.get(user=current_user)
-#     business_hood = profile.location
-#     businesses = Business.objects.filter(name=business_hood)
-
-#     return render(request,'all_businesses.html',{"businesses":businesses})

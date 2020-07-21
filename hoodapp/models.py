@@ -117,11 +117,19 @@ class Security(models.Model):
 
 #Health
 class Health(models.Model):
-    neighbourhood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
+    # neighbourhood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
     name =models.CharField(max_length=100)
     email = models.EmailField()
     contact = models.IntegerField()
     address =models.CharField(max_length=100)
+    hood=models.ForeignKey(Neighbourhood,on_delete=models.CASCADE,null=True,blank=True)
+    user=models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
 
     def __str__(self):
         return self.name
+
+    def save_health(self):
+        self.save()
+    
+    def delete_health(self):
+        self.delete()
