@@ -15,7 +15,7 @@ django-tinymce==3.0.2
 djangorestframework==3.10.3
 gunicorn==20.0.4
 idna==2.10
-Pillow==7.1.2
+Pillow==8.1.1
 psycopg2==2.8.5
 python-dateutil==2.8.1
 python-decouple==3.3
